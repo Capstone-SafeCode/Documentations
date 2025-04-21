@@ -3,12 +3,23 @@
 ## Introduction
 Safe code is a SaaS web application that detects vulnerabilities in source code sent by the user in `.zip` format. Weaknesses are displayed, along with advice on how to resolve them and the sources of the detections.
 
+## Vocabulary
+- `Vulnerability` → A weakness in a system or a code that can be exploited to compromise its security or functionality.
+- `CWE (Common Weakness Enumeration)` → A standardized list of software and hardware weakness types used for identifying and categorizing vulnerabilities.
+- `CVSS (Common Vulnerability Scoring System)` → A framework (tool) for rating the severity of security vulnerabilities (CWE) based on defined metrics.
+
 ## Main functionalities
 - Secure connection
 - Upload .zip file
 - Automatic code analysis
 - Clear, interactive reporting
-- Python and C# (in the future) support
+- Python support
+
+## Future functionalities
+- To support C#.
+- A better interface for viewing vulnerabilities.
+- The application could be configured to suit your environment.
+- Add a CVSS score calculator based on the parameters entered.
 
 ## QuickStart
 ### - Go to the SafeCode website
@@ -54,3 +65,8 @@ Please contact us to discuss your requirements and the possibility of installing
 ### **- Is it secure?**
 → All the code we keep is encrypted, so we don't have access to it.<br>
 → We only keep the last analyse, never the others.<br>
+
+## Sources we used
+- [OWASP](https://owasp.org/Top10/fr/) (To see the list of 2021 CWEs)
+- [Mitre](https://cwe.mitre.org) (To find out what is the vulneravilities of a CWE)
+- [FIRST](https://www.first.org/cvss/) (For the CVSS score)
