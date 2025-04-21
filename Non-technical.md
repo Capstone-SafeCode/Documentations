@@ -11,12 +11,12 @@ Safe code is a SaaS web application that detects vulnerabilities in source code 
 - Python and C# support
 
 ## QuickStart
-Go to the SafeCode website
-Click on `Get Started`
-Create an account and log in
-If you are not already in it, click on `Go to dashboard`
-Click or drag abd drop your `.zip` file
-View your report
+### Go to the SafeCode website
+### Click on `Get Started`
+### Create an account and log in
+### If you are not already in it, click on `Go to dashboard`
+### Click or drag abd drop your `.zip` file
+### View your report
 
 ## FAQ
 ‘My zip doesn't work’ → check the tree structure
