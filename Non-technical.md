@@ -23,6 +23,17 @@ Safe code is a SaaS web application that detects vulnerabilities in source code 
 ### - View your report
 ![alt text](images/review-page.png)
 
+## Pricing
+| Levels         | Descriptions                         |
+|----------------|--------------------------------------|
+| Free           | ![Free](images/free.png)             |
+| Team           | ![Team](images/team.png)             |
+| Enterprise     | ![Enterprise](images/enterprise.png) |
+
+### Free
+### Team
+### Enterprise
+
 ## FAQ
 ‘My zip doesn't work’ → check the tree structure
 
