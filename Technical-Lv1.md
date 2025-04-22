@@ -1,4 +1,4 @@
-﻿# `Technical-Level 1` // Documentation SafeCode
+﻿# `Technical - Level 1` // Documentation SafeCode
 
  # Our CWEs
 - `CWE-20: Improper Input Validation`<br>
