@@ -4,7 +4,7 @@
 Here is the documentation allocated to you according to your licence level. It will complement the Non-technical documentation, which is public.<br>
 To get the documentation for the other levels, increase the level of your licence.
 
- # Our CWEs
+# Our CWEs
 - `CWE-20: Improper Input Validation`<br>
 The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly.
 
@@ -53,7 +53,7 @@ The product contains hard-coded credentials, such as a password or cryptographic
 - `CWE-917: Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')`<br>
 The product constructs all or part of an expression language (EL) statement in a framework such as a Java Server Page (JSP) using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended EL statement before it is executed.
 
- # Get code from Github
+# Get code from Github
 ### - Log in as if you wanted to run a `.zip` analysis
 ### - Copy and paste the link to your Github repot into the input field
 ### - Sign in to your Github account
