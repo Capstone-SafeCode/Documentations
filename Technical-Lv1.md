@@ -1,5 +1,9 @@
 ﻿# `Technical - Level 1` // Documentation SafeCode
 
+# Introduction
+Here is the documentation allocated to you according to your licence level. It will complement the Non-technical documentation, which is public.<br>
+To get the documentation for the other levels, increase the level of your licence.
+
  # Our CWEs
 - `CWE-20: Improper Input Validation`<br>
 The product receives input or data, but it does not validate or incorrectly validates that the input has the properties that are required to process the data safely and correctly.
