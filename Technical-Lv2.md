@@ -1,4 +1,4 @@
-# `Technical - Level 2` // Documentation SafeCode
+# `Technical - Level 2` // SafeCode Documentation
 
 # Introduction
 Here is the documentation allocated to you according to your licence level. It will complement the Non-technical documentation, which is public.<br>
