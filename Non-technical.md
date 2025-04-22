@@ -8,7 +8,7 @@ Safe code is a SaaS web application that detects vulnerabilities in source code 
 - `CWE (Common Weakness Enumeration)` → A standardized list of software and hardware weakness types used for identifying and categorizing vulnerabilities.
 - `CVSS (Common Vulnerability Scoring System)` → A framework (tool) for rating the severity of security vulnerabilities (CWE) based on defined metrics.
 
-## Main functionalities
+## Current functionalities
 - Secure connection
 - Upload .zip file
 - Automatic code analysis
