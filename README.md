@@ -5,7 +5,7 @@ This documentation is for people who want to find out more about SafeCode.<br>
 - [Non-technical](Non-technical.md)
 
 ### Documentation with licences
-This documentations are awailable when you got a licence (Free, Team or Entreprise).<br>
+These documentations are available when you have a licence (Free, Team or Entreprise).<br>
 - [Free - Level 1](Technical-Lv1.md)<br>
 - [Team - Level 2](Technical-Lv2.md)<br>
 - [Enterprise - Level 3](Technical-Lv3.md)
