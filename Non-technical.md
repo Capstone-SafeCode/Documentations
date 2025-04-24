@@ -10,7 +10,8 @@ Safe code is a SaaS web application that detects vulnerabilities in source code 
 
 ## Current functionalities
 - Secure connection
-- Upload .zip file
+- GitHub connection
+- Upload `.zip` file/Get from GitHub
 - Automatic code analysis
 - Clear, interactive reporting
 - Python support
