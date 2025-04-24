@@ -6,12 +6,14 @@ The purpose of this documentation is to explain how the SafeCode project has bee
 # Architecture
 
 # Github
-### - The user enters the GitHub URL of a repo and whether it is public or private.
+### - The user must first be connected to SafeCode via GitHub.
 
-### - He is redirected to GitHub to authenticate himself, then we get an `access_token`
+### - The user enters the GitHub URL of his repo (HTTPS, not SSH).
 
-### - The frontend sends the link + public/private + token to the backend.
+### - The frontend call an api with all the tokens to the backend.
 
-### - The backend downloads the `.zip` via the Github api and places it in the `uplaods/` folder in the private area of the user.
+### - The backend manages the tokens it needs.
 
-### - The analysis is then run as a traditional `.zip` file 
+### - The backend downloads the `.zip` via the Github API and places it in the `uplaods/` folder in the private area of the user.
+
+### - The analysis is then run as a traditional `.zip` file by the frontend. 
