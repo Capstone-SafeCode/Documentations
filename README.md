@@ -1,5 +1,21 @@
 # SafeCode Documentation
 
+# Introduction
+This project was carried out during the 4th year of the EPITECH school, which has a 5-year curriculum. During this year, which we spent in Brussels and which was therefore international, we were able to learn to specialise in cybersecurity.<br>
+In addition to monthly projects, we had to carry out a larger-scale 8-month project called the ‘Capstone’.<br>
+The result was SafeCode, a vulnerability scanner.
+
+## The goal of the Capstone ?
+The aim of the Capstone project was to create a monetisable cybersecurity solution that would cover the entire business process.
+Regular team meetings, meetings with our superiors, our attendance, our results and our presentations.
+All these points were noted.
+
+## Our results
+
+# 
+
+-----------------------------------------------------------------------------------------|
+
 ### Public documentation
 This documentation is for people who want to find out more about SafeCode.<br>
 - [Non-technical](Non-technical.md)
