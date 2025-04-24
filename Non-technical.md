@@ -55,14 +55,14 @@ Please contact us to discuss your requirements and the possibility of installing
 ### **- My zip doesn't work**
 → Check your connexion and you are logged well.<br>
 → Check that it is not empty or corrupted.<br>
-→ Is it a real `.zip` and not with an hiden dot?<br>
+→ Is it a real `.zip` and not with an hiden dot ?<br>
 
 ### **- The report doesn't detect anything**
-→ Is your language supported?<br>
+→ Is your language supported ?<br>
 → Check your licence.<br>
-→ Are you too good in code?<br>
+→ Are you too good in code ?<br>
 
-### **- Is it secure?**
+### **- Is it secure ?**
 → All the code we keep is encrypted, so we don't have access to it.<br>
 → We only keep the last analyse, never the others.<br>
 
