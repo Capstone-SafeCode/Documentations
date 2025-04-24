@@ -1,4 +1,4 @@
-# SafeCode Documentation
+# SafeCode
 
 # Introduction
 This project was carried out during the 4th year of the EPITECH school, which has a 5-year curriculum. During this year, which we spent in Brussels and which was therefore international, we were able to learn to specialise in cybersecurity.<br>
