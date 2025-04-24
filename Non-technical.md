@@ -23,16 +23,19 @@ Safe code is a SaaS web application that detects vulnerabilities in source code 
 - Add a CVSS score calculator based on the parameters entered.
 
 ## QuickStart
-### - Go to the SafeCode website
-### - Click on `Get Started`
-<img src="images/main-page.png" width="800"/><br>
-### - Create an account and log in
-<img src="images/create-account-page.png" width="800"/><br>
+1. **Go to the SafeCode website**
+2. **Click on `Get Started`**
+<img src="images/main-page.png" width="800"/>
+
+3. **Create an account and log in**
+<img src="images/create-account-page.png" width="800"/>
 <img src="images/login-page.png" width="800"/>
-### - If you are not already in it, click on `Go to dashboard`
-### - Click or drag and drop your `.zip` file
-<img src="images/put-zip-page.png" width="800"/><br>
-### - View your report
+
+4. **If you are not already in it, click on `Go to dashboard`**
+5. **Click or drag and drop your `.zip` file**
+<img src="images/put-zip-page.png" width="800"/>
+
+6. **View your report**
 <img src="images/review-page.png" width="800"/>
 
 ## Pricing
