@@ -71,35 +71,38 @@ The Enterprise version of SafeCode allows clients to self-host the entire platfo
 It runs fully offline via Docker, and provides the same functionalities as the SaaS version but without requiring any internet access, after installation and licensing.
 
 The system includes:
-- A local web frontend (Nuxt-based + Dockerized)
-- A backend engine for static code analysis (Dockerized)
-- A MongoDB database to store reports and data
-- A license file that controls activation and expiration
+- A local web frontend (Nuxt-based + Dockerized).
+- A backend engine for static code analysis (Dockerized).
+- A MongoDB database to store reports and data.
+- A license file that controls activation and expiration.
 
 ### How to install it?
 1. **Download the deployment package**
+
 Contact us to receive the installation bundle:
-- `docker-compose.yml`
-- Docker images (or access to a private registry)
-- A license file: `safecode.lic`
+- `docker-compose.yml`.
+- Docker images.
+- A license file: `safecode.lic` (locked).
 
 2. **Place the license file**
+   
 Put the `safecode.lic` file in the same directory as your `docker-compose.yml`.
 ```
 /safecode-enterprise/
   ├── docker-compose.yml
   ├── safecode.lic
 ```
-> 🛡️ This file is mandatory to start SafeCode. It contains your company’s license key and expiration date.
+> This file is mandatory to start SafeCode. It contains your company’s license key and expiration date.
 
 3. **Start the application**
+
 Use Docker Compose to run the platform:
 `docker-compose up -d`
 
 This command will:
-- Start the local MongoDB database
-- Launch the SafeCode backend engine
-- Serve the SafeCode frontend
+- Start the local MongoDB database.
+- Launch the SafeCode backend engine.
+- Serve the SafeCode frontend.
 
 ### After installation
 Once running:
@@ -109,12 +112,12 @@ Once running:
 
 ### Notes
 - Licenses are time-limited. You will need to request a new license when it expires.
-- The frontend is fully customizable. You have to redeploy it internally with your own style or modifications.
+- The frontend is fully customizable (option). You have to redeploy it internally with your own style or modifications.
 - All data is stored locally (MongoDB volume). Ensure you have enough storage (recommended: 2GB+).
 
 ### Requirements
-- Docker installed on your server or machine
-- Disk space for analysis logs and reports
-- A valid `safecode.lic` license file
+- Docker installed on your server or machine.
+- Disk space for analysis logs and reports.
+- A valid `safecode.lic` license file.
 
 For support or updates, contact us at: enterprise@safecode.io
