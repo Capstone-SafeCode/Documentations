@@ -56,3 +56,52 @@ The product constructs all or part of an expression language (EL) statement in a
 # Get code from GitHub
 
 # Configure CI/CD
+### What does it do ?
+- The user adds a SafeCode step to their GitHub Actions pipeline.
+- For each push or pull request, the workflow prepares the code, compresses it into a `.zip` file, and sends it to the SafeCode API using an authentication token.
+- SafeCode analyzes the code and returns a `pass/fail` status based on the percentage of vulnerabilities in it.
+- If the result is `fail`, the workflow can block the merge or deployment.
+### How to configure it ?
+To integrate SafeCode into a GitHub Actions pipeline, the user must follow these steps:
+
+1. **Generate an API token**  
+   Go to the SafeCode dashboard and generate a personal API token under the **CI/CD Integration** section. This token will be used to authenticate API requests.
+
+2. **Add the token as a secret in your repository**  
+   In GitHub, go to your repository → **Settings** → **Secrets and variables** → **Actions** → Add a new secret:
+   - Name: `SAFECODE_TOKEN`
+   - Value: *(your generated token)*
+
+3. **Add a SafeCode step to your GitHub Actions workflow**  
+   Below is an example workflow snippet:
+
+   ```yaml
+   name: SafeCode CI Check
+
+   on: [push, pull_request]
+
+   jobs:
+     safecode:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v3
+
+         - name: Zip source code
+           run: zip -r safecode.zip .
+
+         - name: Send code to SafeCode
+           run: |
+             curl -X POST https://safecode.io/api/analyse-ci \
+               -H "Authorization: Bearer ${{ secrets.SAFECODE_TOKEN }}" \
+               -F "file=@safecode.zip" \
+               -o safecode-result.json
+
+         - name: Check result
+           run: |
+             STATUS=$(jq -r .status safecode-result.json)
+             if [ "$STATUS" = "fail" ]; then
+               echo "❌ SafeCode check failed. Blocking pipeline."
+               exit 1
+             else
+               echo "✅ SafeCode check passed."
+             fi
