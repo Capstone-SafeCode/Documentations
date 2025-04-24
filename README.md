@@ -11,12 +11,18 @@ Regular team meetings, meetings with our superiors, our attendance, our results 
 All these points were noted.
 
 ## Our results
-Criteria | minutes | credits | Grades
----------------------------------------|
+| Criteria                               | Minutes          | Max Credits | Grades obtained |
+|----------------------------------------|------------------|-------------|-----------------|
+| Elevator pitch                         | 1-2 min. max     | 1           | ?/10             |
+| Professionnal presentation             | —                | 2           | ?/20             |
+| Business case                          | 3 min. max       | 1           | ?/10             |
+| Technical & functional demo            | 10 min. max      | 6           | ?/60             |
+| Questions/answers                      | 5 min. max       | 1           | ?/10             |
+| Written documentation                  | —                | 1           | ?/10             |
+| Attendance and active participation to the activities | — | 3           | ?/30             |
+| **Total**                              |                  |             | **?/150**        |
 
-# 
-
----------------------------------------------------------------------------------------------------------------------------------------------------|
+> **⚠️ Note :** The SafeCode project begins here ⬇
 
 ### Public documentation
 This documentation is for people who want to find out more about SafeCode.<br>
