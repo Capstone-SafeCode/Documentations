@@ -11,10 +11,12 @@ Regular team meetings, meetings with our superiors, our attendance, our results 
 All these points were noted.
 
 ## Our results
+Criteria | minutes | credits | Grades
+---------------------------------------|
 
 # 
 
------------------------------------------------------------------------------------------|
+---------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ### Public documentation
 This documentation is for people who want to find out more about SafeCode.<br>
