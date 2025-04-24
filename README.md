@@ -22,11 +22,13 @@ All these points were noted.
 | Attendance and active participation to the activities | — | 3           | ?/30             |
 | **Total**                              |                  |             | **?/150**        |
 
-Bakcend: Paul FRIDRICK, Nicolas LEFEVRE
-Frontend: Gwenael HUBLER, Ewan SIOU
+_Bakcend: Paul FRIDRICK, Nicolas LEFEVRE<br>_
+_Frontend: Gwenael HUBLER, Ewan SIOU_
+
+&nbsp;
 
 > **⚠️ Note :** The SafeCode project begins here ⬇
-
+  
 ### Public documentation
 This documentation is for people who want to find out more about SafeCode.<br>
 - [Non-technical](Non-technical.md)
