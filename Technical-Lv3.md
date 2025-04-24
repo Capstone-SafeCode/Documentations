@@ -65,4 +65,56 @@ Creating certifications for solutions or software is important to prove their re
 3. **Select the parameters you want in your report**
 4. **Confirm to start generation and download**
 
-# Deploy local SafeCode
+# Install SafeCode locally
+### What does it do?
+The Enterprise version of SafeCode allows clients to self-host the entire platform within their own infrastructure.<br>
+It runs fully offline via Docker, and provides the same functionalities as the SaaS version but without requiring any internet access, after installation and licensing.
+
+The system includes:
+- A local web frontend (Nuxt-based + Dockerized)
+- A backend engine for static code analysis (Dockerized)
+- A MongoDB database to store reports and data
+- A license file that controls activation and expiration
+
+### How to install it?
+1. **Download the deployment package**
+Contact us to receive the installation bundle:
+- `docker-compose.yml`
+- Docker images (or access to a private registry)
+- A license file: `safecode.lic`
+
+2. **Place the license file**
+Put the `safecode.lic` file in the same directory as your `docker-compose.yml`.
+```
+/safecode-enterprise/
+  ├── docker-compose.yml
+  ├── safecode.lic
+```
+> 🛡️ This file is mandatory to start SafeCode. It contains your company’s license key and expiration date.
+
+3. **Start the application**
+Use Docker Compose to run the platform:
+`docker-compose up -d`
+
+This command will:
+- Start the local MongoDB database
+- Launch the SafeCode backend engine
+- Serve the SafeCode frontend
+
+### After installation
+Once running:
+1. Open your browser and go to http://localhost:3000
+2. Create your user account (GitHub is unavailable in this mode)
+3. Use SafeCode just like the cloud version
+
+### Notes
+- Licenses are time-limited. You will need to request a new license when it expires.
+- The frontend is fully customizable. You have to redeploy it internally with your own style or modifications.
+- All data is stored locally (MongoDB volume). Ensure you have enough storage (recommended: 2GB+).
+
+### Requirements
+- Docker installed on your server or machine
+- Disk space for analysis logs and reports
+- A valid `safecode.lic` license file
+
+For support or updates, contact us at: enterprise@safecode.io
