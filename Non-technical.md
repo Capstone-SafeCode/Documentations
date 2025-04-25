@@ -55,6 +55,8 @@ Downloadable from our website. The price will be the basic price and will increa
 Please contact us to discuss your requirements and the possibility of installing SafeCode locally in your infrastructure.<br>
 (Level 3 technical documentation becomes accessible).
 
+> 💡**Note**: Other optional services, like training, custom options and more, are also available (price on request)
+
 ## FAQ
 ### **- My zip doesn't work**
 → Check your connexion and you are logged well.<br>
