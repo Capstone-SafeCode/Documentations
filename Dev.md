@@ -77,7 +77,9 @@ Example of `.json` :<br>
 The .json files contain ‘dangerous’ and ‘safe’ functions with their name and path in the AST.
 If a dangerous function is detected and then the safe function (or just the safe), nothing will happen. But if there is only the dangerous function, then the vulnerability is recorded.
 
-### 3. Logic server
+### 3. Global logic
+
+### 4. Logic server
 **Folder name:** `src_server/`<br>
 **Port:** `8080`<br>
 **Endpoints:**<br>
@@ -110,13 +112,26 @@ It exposes several endpoints grouped into two categories: authentication and pro
 - All protected routes use a JWT authentication middleware (`AuthMiddleware`).
 - CORS policy allows all origins and methods to facilitate communication with the frontend.
 
-### 4. Logic parser
-**Folder name:** `src_parser/`
+### 5. Logic parser
+**Folder name:** `src_parser/`<br>
 
-### 5. Logic analyser
+The parser is used to read all the files in a folder (`.zip` which has been extracted) and to note which language it is encoded in.<br>
+Example its return :<br>
+```
+code/200uv1.py py
+code/200v1.py py
+code/201uv1.py py
+code/201v1.py py
+code/20uv1.py py
+code/20v1.py py
+code/22uv1.py py
+code/22v1.py py
+```
+
+### 6. Logic analyser
 **Folder name:** `src_analyser/`  
 
-### 6. Docker
+### 7. Docker
 **Folder name: `docker-compose.yml & Dockerfile`**
 
 # Frontend
