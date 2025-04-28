@@ -32,7 +32,7 @@ Folder name: `src_parser/`
 Folder name: `src_server/`
 
 ### 6. Docker
-Folder name: `docker-compose.yml`
+Folder name: `docker-compose.yml & Dockerfile`
 
 # Github
 1. **The user must first be connected to SafeCode via GitHub**
