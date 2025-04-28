@@ -22,6 +22,7 @@ Safe code is a SaaS web application that detects vulnerabilities in source code 
 - A better interface for viewing vulnerabilities
 - The application could be configured to suit your environment
 - Add a CVSS score calculator based on the parameters entered
+- To have his organisation on SafeCode
 
 ## QuickStart
 1. **Go to the SafeCode website**
