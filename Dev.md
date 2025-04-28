@@ -13,26 +13,113 @@ This documentation is for current or future developers. The purpose of it is to 
 <img src="images/SafeCodeUseCaseDiagram.png" width=800\>
 
 # Architecture
-This architecture is currently in monolithic, here is the list of folders and their purpose:<br>
+This architecture is currently in monolithic.
+## Graphic
+```mermaid
+flowchart TD
+    subgraph Docker Network
+        Frontend(Frontend - React App)
+        Backend(Backend - API Server)
+        MongoDB[(MongoDB Database)]
+        LicenseChecker([License Checker])
+    end
 
+    User --> Frontend
+    Frontend --> Backend
+    Backend --> MongoDB
+    Backend --> LicenseChecker
+```
 
+## Explanation
 ### 1. Ast
-Folder name: `ast/`
+**Folder name:** `ast/`<br>
+This folder is used to put all the code converters in AST. To convert a language we use the original language itself.<br>
+The code will be called by the parser, the file name will be passed as an argument and the code will return the AST in the form of a `.json` file.
 
 ### 2. Json
-Folder name: `doc/`
+**Folder name:** `doc/`<br>
+This file contains all the rules that have been created and can be analysed.<br>
+The model we use is :<br>
+```
+CWE-[number]/
+   rule[1].json
+```
+Example of `.json` :<br>
+```json
+{
+  "schema": {
+    "dangerous_functions": [
+      [
+        "int",
+        ["value.func.id"]
+      ]
+    ],
+    "safe_functions": [
+      [
+        "str.isdigit",
+        ["value.func.attr"]
+      ]
+    ]
+  },
+  "ToFixIt": {
+    "text": "Validate query parameters before using them. Use methods like .isdigit() or regex to ensure proper types."
+  },
+  "Kind": {
+    "text": "Improper Input Validation (CWE-20)"
+  },
+  "Doc": {
+    "what_is_an_issues": "User input is directly cast to an integer without validation. If the input is not a valid number, it can raise a runtime error, causing the app to crash or behave unpredictably.",
+    "how_can_i_fix_it": "Always validate input using safe type checks before converting types. In this case, check if the input is a digit before using int().",
+    "more_info": "https://cwe.mitre.org/data/definitions/20.html"
+  }
+}
+```
+The .json files contain ‘dangerous’ and ‘safe’ functions with their name and path in the AST.
+If a dangerous function is detected and then the safe function (or just the safe), nothing will happen. But if there is only the dangerous function, then the vulnerability is recorded.
 
-### 3. Logic analyser
-Folder name: `src_analyser/`
+### 3. Logic server
+**Folder name:** `src_server/`<br>
+**Port:** `8080`<br>
+**Endpoints:**<br>
+
+The SafeCode backend runs on port 8080 using the Gin framework.<br>
+It exposes several endpoints grouped into two categories: authentication and protected actions (requiring a valid token).
+
+#### 🔑 Authentication Endpoints
+
+| Method | Path                    | Description                                 |
+|--------|--------------------------|---------------------------------------------|
+| GET    | `/auth/github`            | Redirects the user to GitHub for OAuth login. |
+| GET    | `/auth/github/callback`   | Handles the OAuth callback from GitHub and retrieves the access token. |
+| POST   | `/auth/register`          | Registers a new user with email and password. |
+| POST   | `/auth/login`             | Logs a user in and returns a JWT token. |
+| POST   | `/logout`                 | Logs the user out by invalidating their token (handled client-side). |
+
+#### 🔒 Protected Endpoints (require authentication)
+
+| Method | Path                      | Description                                 |
+|--------|----------------------------|---------------------------------------------|
+| GET    | `/users`                   | Retrieves the list of all registered users. |
+| GET    | `/me`                      | Retrieves the profile of the authenticated user. |
+| POST   | `/upload`                  | Uploads a ZIP file for analysis. |
+| POST   | `/analyse`                 | Starts the analysis process on an uploaded file. |
+| GET    | `/analyse/history`         | Retrieves the analysis history of the user. |
+| POST   | `/github/download`         | Downloads and extracts a GitHub repository based on a provided link. |
+
+#### 🛡️ Security and Middleware
+- All protected routes use a JWT authentication middleware (`AuthMiddleware`).
+- CORS policy allows all origins and methods to facilitate communication with the frontend.
 
 ### 4. Logic parser
-Folder name: `src_parser/`
+**Folder name:** `src_parser/`
 
-### 5. Logic server
-Folder name: `src_server/`
+### 5. Logic analyser
+**Folder name:** `src_analyser/`  
 
 ### 6. Docker
-Folder name: `docker-compose.yml & Dockerfile`
+**Folder name: `docker-compose.yml & Dockerfile`**
+
+# Frontend
 
 # GitHub Integration Guide
 
