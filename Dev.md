@@ -137,11 +137,6 @@ code/22v1.py py
 # Frontend
 
 # GitHub Integration Guide
-
-This documentation explains how to integrate GitHub authentication and access into your Go project.
-
----
-
 ## 1. Create a GitHub OAuth Application
 
 To allow users to log in via GitHub, you need to create an OAuth application on GitHub:
@@ -154,8 +149,6 @@ To allow users to log in via GitHub, you need to create an OAuth application on 
    - **Authorization callback URL**: `http://localhost:3000/auth/github/callback`
 4. Click **"Register application"**
 5. Copy the **Client ID** and **Client Secret**
-
----
 
 ## 2. Environment Configuration
 
