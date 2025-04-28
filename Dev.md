@@ -10,7 +10,7 @@ This documentation is for current or future developers. The purpose of it is to 
 - Docker
 
 # User path
-
+[UseCaseDiagram](images/SafeCodeUseCaseDiagram.png)
 
 # Architecture
 This architecture is currently in monolithic, here is the list of folders and their purpose:<br>
