@@ -47,8 +47,8 @@ To allow users to log in via GitHub, you need to create an OAuth application on 
 1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
 2. Click on **"New OAuth App"**
 3. Fill in the fields:
-   - **Application name**: e.g. `Safecode`
-   - **Homepage URL**: e.g. `http://localhost:3000`
+   - **Application name**: `Safecode`
+   - **Homepage URL**: `http://localhost:3000`
    - **Authorization callback URL**: `http://localhost:3000/auth/github/callback`
 4. Click **"Register application"**
 5. Copy the **Client ID** and **Client Secret**
