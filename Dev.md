@@ -176,7 +176,7 @@ If the extension is unknown, the file is skipped and an error message is logged.
 
 #### 🐍 Example: Python Analysis
 The function `analyseAskedPyFile()` builds an AST of the current file path and passes it to the main Python analyser function.<br>
-This analyser launches submodules that follow the OWASP Top 10 2021, such as A01, A02, etc (Rest of the list in [Non-technical](Non-technical.md)).<br>
+This analyser launches submodules that follow the OWASP Top 10 2021, such as A01, A02, etc (Rest of the list in [Non-technical](Technical-Lv1.md)).<br>
 
 ```go
 rules.RunA01Analysis(resultJson, astRaw, filename)
