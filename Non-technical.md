@@ -1,5 +1,15 @@
 ﻿# `Non-technical` // SafeCode Documentation
 
+## 📚 Table of Contents
+
+1. [Introduction](#introduction)
+2. [Vocabulary](#vocabulary)
+3. [Current functionalities](#current-functionalities)
+4. [Future functionalities](#future-functionalities)
+5. [QuickStart](#quickstart)
+6. [Pricing](#pricing)
+7. [FAQ](#faq)
+
 ## Introduction
 Safe code is a SaaS web application that detects vulnerabilities in source code sent by the user in `.zip` format. Weaknesses are displayed, along with advice on how to resolve them and the sources of the detections.
 
