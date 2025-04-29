@@ -5,7 +5,7 @@
 1. [Introduction](#introduction)
 2. [Our CWEs](#our-cews)
 3. [Get code from GitHub](#get-code-from-github)
-4. [Configure CI/CD](#configure-ci-cd)
+4. [Configure CI/CD](#configure-cicd)
 
 ## Introduction
 Here is the documentation allocated to you according to your licence level. It will complement the Non-technical documentation, which is public.<br>
