@@ -1,5 +1,14 @@
 # `Technical - Level 3` // SafeCode Documentation
 
+## 📚 Table of Contents
+
+1. [Introduction](#introduction)
+2. [Our CWEs](#our-cews)
+3. [Get code from GitHub](#get-code-from-github)
+4. [Configure CI/CD](#configure-cicd)
+5. [Report in PDF](#report-in-pdf)
+6. [Install SafeCode locally](#install-safecode-locally)
+
 ## Introduction
 Here is the documentation allocated to you according to your licence level. It will complement the Non-technical documentation, which is public.<br>
 To get the documentation for the last level, increase the level of your licence.
