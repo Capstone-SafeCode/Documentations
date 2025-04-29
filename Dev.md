@@ -31,18 +31,27 @@ flowchart TD
 ```
 
 ## Explanation
-### 1. Ast
+### 1. Global logic
+First of all, the frontend sends an analysis request after making an upload request (or via GitHub).<br>
+The backend will receive it, take the `.zip` of the project, decompress it and send the file pass of the folder containing the project to the parser.<br>
+The parser will return a list that we will send to the analyser, which will go through the files one by one, storing them in a list (`*[]gin.H`) that it will save in our db (for your historical) and then send back to the frontend.<br>
+
+**So, it's :**<br>
+`Frontend request -> Zip file extraction -> Parser -> Analyser -> Saving in our database -> Sending back to frontend`
+
+### 2. Ast
 **Folder name:** `ast/`<br>
 This folder is used to put all the code converters in AST. To convert a language we use the original language itself.<br>
 The code will be called by the parser, the file name will be passed as an argument and the code will return the AST in the form of a `.json` file.
 
-### 2. Json
+### 3. Json
 **Folder name:** `doc/`<br>
 This file contains all the rules that have been created and can be analysed.<br>
 The model we use is :<br>
 ```
 CWE-[number]/
    rule[1].json
+   (...)
 ```
 Example of `.json` :<br>
 ```json
@@ -76,8 +85,6 @@ Example of `.json` :<br>
 ```
 The .json files contain ‘dangerous’ and ‘safe’ functions with their name and path in the AST.
 If a dangerous function is detected and then the safe function (or just the safe), nothing will happen. But if there is only the dangerous function, then the vulnerability is recorded.
-
-### 3. Global logic
 
 ### 4. Server
 **Folder name:** `src_server/`<br>
