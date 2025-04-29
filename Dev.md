@@ -213,8 +213,76 @@ Each result includes:<br>
 - Its kind
 - Explanation and solution suggestion
 
-### 7. Docker
-**Folder name: `docker-compose.yml & Dockerfile`**
+### 7. Docker Setup
+**Docker Compose file:** `docker-compose.yml`  
+**Dockerfile:** Root directory  
+
+The SafeCode backend is containerized using Docker and orchestrated through a simple Docker Compose configuration. This allows for fast, reproducible deployment and development on any machine with Docker installed.
+
+#### 🧱 Overview
+
+The setup uses:
+- A single container: `core-api` running the backend logic
+- A bind mount to sync the code inside the container
+- An .env file for environment variables
+- The **Go 1.24.1 image** as the base
+
+#### 📄 Docker Compose Summary
+
+```yaml
+services:
+  api:
+    container_name: core-api
+    image: api:1.0
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src_server:/app/src_server
+    env_file:
+      - .env
+    restart: always
+```
+Port 8080 is exposed and mapped to the host for API access.
+
+The source folder ./src_server is mounted inside the container at /app/src_server.
+
+Environment variables are loaded from a local .env file.
+
+#### ⚙️ Dockerfile Breakdown
+```Dockerfile
+FROM golang:1.24.1
+
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+EXPOSE 8080
+
+CMD ["go", "run", "./src_server/main.go"]
+```
+Base image: Official Go image (v1.24.1)
+
+Dependencies: Downloads modules via go mod download
+
+Code copy: Full project copied into /app
+
+Startup command: Runs the server with go run ./src_server/main.go
+
+#### 🚀 Running the Server
+To build and start the backend container:
+
+```bash
+docker-compose up --build
+```
+Use the --build flag on first run or after code changes.
+
+To stop the service:
+
+```bash
+docker-compose down
+```
 
 # Frontend
 
