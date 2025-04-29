@@ -1,5 +1,11 @@
 ﻿# `Technical - Level 1` // SafeCode Documentation
 
+## 📚 Table of Contents
+
+1. [Introduction](#introduction)
+2. [Our CWEs](#our-cews)
+3. [Get code from GitHub](#get-code-from-github)
+
 ## Introduction
 Here is the documentation allocated to you according to your licence level. It will complement the Non-technical documentation, which is public.<br>
 To get the documentation for the other levels, increase the level of your licence.
