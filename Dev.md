@@ -1,5 +1,18 @@
 # `Dev` // SafeCode Documentation
 
+## 📚 Table of Contents
+
+1. [Introduction](#introduction)
+2. [Technologies used](#technologies-used)
+3. [User path](#user-path)
+4. [Architecture](#architecture)
+5. [Global logic](#1-global-logic)
+6. [Server](#4-server)
+7. [Parser](#5-parser)
+8. [Analyser](#6-analyser)
+9. [Docker Setup](#7-docker-setup)
+10. [GitHub Integration](#github-integration)
+
 # Introduction
 This documentation is for current or future developers. The purpose of it is to explain how the SafeCode project has been architected, how it has been created, how it works and how to add functionalities.
 
@@ -286,7 +299,7 @@ docker-compose down
 
 # Frontend
 
-# GitHub Integration Guide
+# GitHub Integration
 ## How our GitHub connection works
 SafeCode allows users to log in using their GitHub accounts through the standard OAuth2 flow. This process is handled by two backend routes and initiated from the frontend.<br>
 1. The frontend redirects the user to the `/auth/github` endpoint.
