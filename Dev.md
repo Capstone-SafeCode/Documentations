@@ -156,7 +156,7 @@ If the extension is unknown, the file is skipped and an error message is logged.
 
 #### 🐍 Example: Python Analysis
 The function `analyseAskedPyFile()` builds an AST of the current file path and passes it to the main Python analyser function.<br>
-This analyser launches submodules that follow the OWASP Top 10 2021, such as A01, A02, etc (Rest of the list in .<br>
+This analyser launches submodules that follow the OWASP Top 10 2021, such as A01, A02, etc (Rest of the list in [Non-technical](Non-technical.md)).<br>
 
 ```go
 rules.RunA01Analysis(resultJson, astRaw, filename)
@@ -164,27 +164,27 @@ rules.RunA02Analysis(...)
 ```
 Each of these submodules runs a set of checks based on CWE IDs (Common Weakness Enumeration).<br>
 
-🔍 Rule Execution by CWE<br>
+#### 🔍 Rule Execution by CWE<br>
 The function RunA01Analysis internally calls RunBeforeAnalysis, which:<br>
 
-Receives the CWE ID (e.g., "22" for Path Traversal)<br>
-
-Receives the detection method index (e.g., "1" for static AST pattern matching)<br>
-
+Receives the CWE ID ("22" for Path Traversal)<br>
+Receives the detection method index ("1" for static AST pattern matching)<br>
 Example:<br>
-
 ```go
 RunBeforeAnalysis(resultJson, astRaw, filename, "22", "1")
+RunBeforeAnalysis(resultJson, astRaw, filename, "200" "1")
 RunBeforeAnalysis(resultJson, astRaw, filename, ..., ...)
 ```
 
-This allows multiple detection strategies per CWE in the future ("1" = AST, "2" = data flow, etc.).<br>
+This allows multiple detection strategies per CWE in the future ("1" = first way to detect a CWE, "2" = another way, etc.).<br>
 
-🧠 How to add a new language<br>
-To add support for a new language:<br>
+#### 🧠 How to add a new language<br>
+To add support for a new language (in this exemple `js`):<br>
 
 Create a new function:<br>
-func analyseAskedJsFile(result *[]gin.H, filePath string)<br>
+```go
+func analyseAskedJsFile(result *[]gin.H, filePath string)
+```
 
 Add the function to the analyzers dispatch map:<br>
 
@@ -192,14 +192,11 @@ Add the function to the analyzers dispatch map:<br>
 "js": analyseAskedJsFile,
 ```
 Inside the analysis function:<br>
+- Parse the file using the language’s AST or regex
+- Call the relevant OWASP or custom rules
+- Append results in the same format as others ([]gin.H)
 
-Parse the file using the language’s AST or regex<br>
-
-Call the relevant OWASP or custom rules<br>
-
-Append results in the same format as others ([]gin.H)<br>
-
-📦 Result Format<br>
+#### 📦 Result Format<br>
 The results of the analysis are formatted as described in the JSON schema section (see above in the doc).<br>
 Each result includes:<br>
 - CWE ID
