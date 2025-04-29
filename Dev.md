@@ -287,7 +287,69 @@ docker-compose down
 # Frontend
 
 # GitHub Integration Guide
-## 1. Create a GitHub OAuth Application
+## How our GitHub connection works
+SafeCode allows users to log in using their GitHub accounts through the standard OAuth2 flow. This process is handled by two backend routes and initiated from the frontend.<br>
+1. The frontend redirects the user to the `/auth/github` endpoint.
+2. The backend constructs a GitHub OAuth2 URL and redirects the user to GitHub.
+3. After login/authorization, GitHub redirects the user back to `/auth/github/callback` with a temporary code.
+4. The backend exchanges this code for a GitHub access token.
+5. The backend fetches the user's GitHub profile using the token.
+6. The user is either created or updated in the database.
+7. A JWT token is returned to the frontend for authentication.
+
+#### 🧠 Technical Breakdown
+##### 🔗 1. `GET /auth/github`
+
+- Generates a GitHub OAuth2 URL using the config:
+  ```go
+  url := config.OAuth2Config.AuthCodeURL(config.OAuthStateString, oauth2.AccessTypeOffline)
+  ```
+Redirects the user to GitHub for authentication.
+
+Includes a state parameter to protect against CSRF.
+
+##### 🔁 2. GET /auth/github/callback
+Validates the returned state to ensure it matches the one sent.
+
+Exchanges the code for an access token via:
+```go
+token, err := OAuth2Config.Exchange(ctx, code)
+```
+Uses the token to query the GitHub API and retrieve user info:
+```sql
+GET https://api.github.com/user
+```
+
+Checks if the user already exists in MongoDB:
+If not → creates the user
+
+If yes → updates their GitHub token
+
+Generates a JWT token using internal logic:
+
+```go
+jwtToken, err := generateJWT(user)
+```
+Returns:
+- A success message
+- The JWT token
+- The GitHub user data
+
+##### 🧑‍💻 Frontend Integration
+On the frontend:
+- You call GET /auth/github (can be triggered by a login button).
+- The user is redirected to GitHub.
+- After login, GitHub redirects to /auth/github/callback, which returns a JSON with a token.
+- You can store the token (e.g., in localStorage) and use it for future authenticated requests.
+
+##### 🛡️ Notes
+Tokens are stored in the database (github_token) for optional future GitHub actions.
+
+The JWT is required to access all protected endpoints in SafeCode.
+
+This method does not require a password for GitHub users.
+
+## 2. Create a GitHub OAuth Application
 
 To allow users to log in via GitHub, you need to create an OAuth application on GitHub:
 
@@ -300,7 +362,7 @@ To allow users to log in via GitHub, you need to create an OAuth application on 
 4. Click **"Register application"**
 5. Copy the **Client ID** and **Client Secret**
 
-## 2. Environment Configuration
+## 3. Environment Configuration
 
 Store your GitHub credentials in your `.env` file:
 
