@@ -13,21 +13,21 @@
 9. [Docker Setup](#7-docker-setup)
 10. [GitHub Integration](#github-integration)
 
-# Introduction
+## Introduction
 This documentation is for current or future developers. The purpose of it is to explain how the SafeCode project has been architected, how it has been created, how it works and how to add functionalities.
 
-# Technologies used
+## Technologies used
 - Go (Classic + Gin)
 - Python (for AST conversion)
 - MongoDB (Atlas)
 - Docker
 
-# User path
+## User path
 <img src="images/SafeCodeUseCaseDiagram.png" width=800\>
 
-# Architecture
+## Architecture
 This architecture is currently in monolithic.
-## Graphic
+## 1. Graphic
 ```mermaid
 flowchart TD
     subgraph Docker Network
@@ -43,7 +43,7 @@ flowchart TD
     Backend --> LicenseChecker
 ```
 
-## Explanation
+## 2. Explanation
 ### 1. Global logic
 First of all, the frontend sends an analysis request after making an upload request (or via GitHub).<br>
 The backend will receive it, take the `.zip` of the project, decompress it and send the file pass of the folder containing the project to the parser.<br>
@@ -297,10 +297,10 @@ To stop the service:
 docker-compose down
 ```
 
-# Frontend
+## Frontend
 
-# GitHub Integration
-## How our GitHub connection works
+## GitHub Integration
+### How our GitHub connection works
 SafeCode allows users to log in using their GitHub accounts through the standard OAuth2 flow. This process is handled by two backend routes and initiated from the frontend.<br>
 1. The frontend redirects the user to the `/auth/github` endpoint.
 2. The backend constructs a GitHub OAuth2 URL and redirects the user to GitHub.
