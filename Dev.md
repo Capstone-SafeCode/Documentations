@@ -79,7 +79,7 @@ If a dangerous function is detected and then the safe function (or just the safe
 
 ### 3. Global logic
 
-### 4. Logic server
+### 4. Server
 **Folder name:** `src_server/`<br>
 **Port:** `8080`<br>
 **Endpoints:**<br>
@@ -112,7 +112,7 @@ It exposes several endpoints grouped into two categories: authentication and pro
 - All protected routes use a JWT authentication middleware (`AuthMiddleware`).
 - CORS policy allows all origins and methods to facilitate communication with the frontend.
 
-### 5. Logic parser
+### 5. Parser
 **Folder name:** `src_parser/`<br>
 
 The parser is used to read all the files in a folder (`.zip` which has been extracted) and to note which language it is encoded in.<br>
@@ -128,8 +128,86 @@ code/22uv1.py py
 code/22v1.py py
 ```
 
-### 6. Logic analyser
-**Folder name:** `src_analyser/`  
+### 6. Analyser
+**Folder name:** `src_analyser/`<br>
+This folder contains all the logic for static code analysis.<br>
+It is invoked by the backend when a user uploads a file or provides a GitHub repository.<br>
+
+#### 🧠 General Workflow
+
+1. The server sends a list of extracted file paths to the analyser.
+2. The analyser:
+   - Identifies the language of each file based on its extension
+   - Selects the appropriate analysis function
+   - Runs the analysis and appends the results to a final JSON array (then saved for historical purposes and sent to the frontend)
+
+```go
+// Core dispatch logic
+analyzers := map[string]func(*[]gin.H, string){
+  "py": analyseAskedPyFile,
+  "cs": analyseAskedCsFile,
+}
+```
+Each language-specific function uses its own analysis logic.<br>
+
+#### 🧩 Language Detection & Dispatch
+The function `AnalyseList([]string)` loops through the list of files, detects the language via file extension, and calls the corresponding analysis function.<br>
+If the extension is unknown, the file is skipped and an error message is logged.<br>
+
+#### 🐍 Example: Python Analysis
+The function `analyseAskedPyFile()` builds an AST of the current file path and passes it to the main Python analyser function.<br>
+This analyser launches submodules that follow the OWASP Top 10 2021, such as A01, A02, etc (Rest of the list in .<br>
+
+```go
+rules.RunA01Analysis(resultJson, astRaw, filename)
+rules.RunA02Analysis(...)
+```
+Each of these submodules runs a set of checks based on CWE IDs (Common Weakness Enumeration).<br>
+
+🔍 Rule Execution by CWE<br>
+The function RunA01Analysis internally calls RunBeforeAnalysis, which:<br>
+
+Receives the CWE ID (e.g., "22" for Path Traversal)<br>
+
+Receives the detection method index (e.g., "1" for static AST pattern matching)<br>
+
+Example:<br>
+
+```go
+RunBeforeAnalysis(resultJson, astRaw, filename, "22", "1")
+RunBeforeAnalysis(resultJson, astRaw, filename, ..., ...)
+```
+
+This allows multiple detection strategies per CWE in the future ("1" = AST, "2" = data flow, etc.).<br>
+
+🧠 How to add a new language<br>
+To add support for a new language:<br>
+
+Create a new function:<br>
+func analyseAskedJsFile(result *[]gin.H, filePath string)<br>
+
+Add the function to the analyzers dispatch map:<br>
+
+```go
+"js": analyseAskedJsFile,
+```
+Inside the analysis function:<br>
+
+Parse the file using the language’s AST or regex<br>
+
+Call the relevant OWASP or custom rules<br>
+
+Append results in the same format as others ([]gin.H)<br>
+
+📦 Result Format<br>
+The results of the analysis are formatted as described in the JSON schema section (see above in the doc).<br>
+Each result includes:<br>
+- CWE ID
+- Rule ID
+- File path
+- Line number
+- Its kind
+- Explanation and solution suggestion
 
 ### 7. Docker
 **Folder name: `docker-compose.yml & Dockerfile`**
